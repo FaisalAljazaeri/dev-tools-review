@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button, ModalHeader, ModalBody } from "reactstrap";
+import "./AddReviewModal.css";
 import AddReviewForm from "./AddReviewForm";
 
 class AddReviewModal extends Component {
@@ -25,7 +26,7 @@ class AddReviewModal extends Component {
     render() {
         return (
             <div>
-                <Button color="success" onClick={this.toggle}>
+                <Button color="success" onClick={this.toggle} id="add-button">
                     Add Review
                 </Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggle}>
