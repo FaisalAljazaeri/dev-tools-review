@@ -3,21 +3,21 @@ import "./Review.css";
 
 class Review extends Component {
     render() {
+        const {
+            itemName,
+            content,
+            itemImgSrc,
+            isRecommended
+        } = this.props.review;
+
         return (
             <div className="review-card">
                 <div className="img-container">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRy4WeAtfc2HGaPPUzQl63wLibYgOsVJOM9S5B6oTqGRUiFNO-z"
-                        alt="Img"
-                    />
+                    <img src={itemImgSrc} alt={itemName} />
                 </div>
                 <div className="review-content">
-                    <h3>VS Code</h3>
-                    <p>
-                        qpjpdojpoqjdpoj oj dpojpo dj d jo djpojd pojdojpo jdoj
-                        dpojpojdpo jdpoj djpojdpj djpojddoj dpoj
-                        fiqhihqfohfqohqfoihoihqf qfoihofq ihqfoihfq doqjdojqf.
-                    </p>
+                    <h3>{itemName}</h3>
+                    <p>{content}</p>
                 </div>
 
                 <div className="review-controls">
