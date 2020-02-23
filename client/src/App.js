@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import "./App.css";
-import Review from "./components/Review";
+import ReviewsContainer from "./components/ReviewsContainer";
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            reviews: []
+        };
+    }
+
     render() {
         return (
             <div>
-                <Review />
+                <ReviewsContainer reviews={this.state.reviews} />
             </div>
         );
     }
