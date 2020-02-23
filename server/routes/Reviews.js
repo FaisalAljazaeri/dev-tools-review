@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
     // Create a new review object based on the recieved data
     const review = new Review({
         itemName: req.body.itemName,
+        content: req.body.content,
         isRecommended: req.body.isRecommended,
         lastUpdated: new Date()
     });

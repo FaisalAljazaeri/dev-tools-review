@@ -7,6 +7,11 @@ const validationSchema = joi.object({
         .min(6)
         .required(),
 
+    content: joi
+        .string()
+        .min(10)
+        .max(150),
+
     isRecommended: joi.bool().required()
 });
 
