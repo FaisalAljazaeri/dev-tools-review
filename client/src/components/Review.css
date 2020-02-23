@@ -40,7 +40,14 @@ p {
 }
 
 i {
-    color: #279627;
     cursor: pointer;
     margin: 10px;
+}
+
+.like {
+    color: #279627;
+}
+
+.dislike {
+    color: #b61414;
 }

@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
 
     // Try to save the new review to the Database
     try {
-        const savedReview = await review.save();
+        await review.save();
         res.status(200).send({ review: review });
     } catch (err) {
         res.status(400).send(err);
@@ -34,6 +34,20 @@ router.get("/", async (req, res) => {
     // Find all reviews in the Database and send them in response
     Review.find({}, (err, reviews) => {
         res.status(200).send(reviews);
+    });
+});
+
+router.patch("/:reviewId", (req, res) => {
+    Review.findById(req.body.reviewId, async (err, review) => {
+        review.isRecommended = !review.isRecommended;
+
+        // Try to save the new review to the Database
+        try {
+            await review.save();
+            res.status(200).send({ review: review });
+        } catch (err) {
+            res.status(400).send(err);
+        }
     });
 });
 
