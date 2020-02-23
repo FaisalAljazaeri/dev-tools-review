@@ -16,6 +16,7 @@ router.post("/", async (req, res) => {
     const review = new Review({
         itemName: req.body.itemName,
         content: req.body.content,
+        itemImgSrc: req.body.itemImgSrc,
         isRecommended: req.body.isRecommended,
         lastUpdated: new Date()
     });

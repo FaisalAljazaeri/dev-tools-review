@@ -12,6 +12,8 @@ const validationSchema = joi.object({
         .min(10)
         .max(150),
 
+    itemImgSrc: joi.string().required(),
+
     isRecommended: joi.bool().required()
 });
 
