@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
     // Try to save the new review to the Database
     try {
         const savedReview = await review.save();
-        res.status(200).send({ review: savedReview._id });
+        res.status(200).send({ review: review });
     } catch (err) {
         res.status(400).send(err);
     }

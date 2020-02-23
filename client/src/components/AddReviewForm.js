@@ -21,7 +21,7 @@ class AddReviewForm extends Component {
 
     submitHandler = e => {
         e.preventDefault();
-        this.props.addReview(this.state);
+        this.props.createReview(this.state);
     };
 
     render() {
@@ -34,6 +34,7 @@ class AddReviewForm extends Component {
                         name="itemName"
                         placeholder="item name"
                         onChange={this.changehandler}
+                        value={this.state.itemName}
                     />
                 </FormGroup>
                 <FormGroup>
@@ -43,6 +44,7 @@ class AddReviewForm extends Component {
                         name="content"
                         placeholder="Review Content"
                         onChange={this.changehandler}
+                        value={this.state.content}
                     />
                 </FormGroup>
                 <FormGroup>
@@ -52,6 +54,7 @@ class AddReviewForm extends Component {
                         name="itemImgSrc"
                         placeholder="Image Src"
                         onChange={this.changehandler}
+                        value={this.state.itemImgSrc}
                     />
                 </FormGroup>
                 <FormGroup>
@@ -60,6 +63,7 @@ class AddReviewForm extends Component {
                         type="select"
                         name="isRecommended"
                         onChange={this.changehandler}
+                        value={this.state.isRecommended}
                     >
                         <option value={false}>No</option>
                         <option value={true}>Yes</option>

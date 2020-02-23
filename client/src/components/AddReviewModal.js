@@ -17,9 +17,9 @@ class AddReviewModal extends Component {
         });
     };
 
-    addReview = review => {
-        console.log(review);
+    createReview = review => {
         this.toggle();
+        this.props.addReview(review);
     };
 
     render() {
@@ -35,7 +35,7 @@ class AddReviewModal extends Component {
                     <ModalBody>
                         <AddReviewForm
                             closeModal={this.toggle}
-                            addReview={this.addReview}
+                            createReview={this.createReview}
                         />
                     </ModalBody>
                 </Modal>

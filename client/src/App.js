@@ -9,15 +9,25 @@ class App extends Component {
         super(props);
 
         this.state = {
-            reviews: [],
-            addReviewModalActive: false
+            reviews: []
         };
     }
+
+    addReview = review => {
+        axios
+            .post("http://localhost:5000/api/reviews", review)
+            .then(res => {
+                this.setState({
+                    reviews: [...this.state.reviews, res.data.review]
+                });
+            })
+            .catch(err => console.log(err));
+    };
 
     render() {
         return (
             <div className="container">
-                <AddReviewModal isOpen={this.state.addReviewModalActive} />
+                <AddReviewModal addReview={this.addReview} />
                 <ReviewsContainer reviews={this.state.reviews} />
             </div>
         );
