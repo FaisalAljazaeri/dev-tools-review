@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Review = require("../models/Review");
+const mongoose = require("mongoose");
 const validateReview = require("../validation/reviewValidation");
 
 router.post("/", async (req, res) => {
@@ -26,6 +27,13 @@ router.post("/", async (req, res) => {
     } catch (err) {
         res.status(400).send(err);
     }
+});
+
+router.get("/", async (req, res) => {
+    // Find all reviews in the Database and send them in response
+    Review.find({}, (err, reviews) => {
+        res.status(200).send(reviews);
+    });
 });
 
 module.exports = router;
