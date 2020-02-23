@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const cors = require("cors");
 // Import routes
 const reviewsRoute = require("./routes/Reviews");
 
@@ -16,6 +17,9 @@ mongoose.set("useNewUrlParser", true);
 mongoose.connect(process.env.CONN_STRING, () => {
     console.log("Connected to DB");
 });
+
+// Allow CORS
+app.use(cors());
 
 // Middlewares
 app.use(express.json());
