@@ -2,19 +2,22 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
 import ReviewsContainer from "./components/ReviewsContainer";
+import AddReviewModal from "./components/AddReviewModal";
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            reviews: []
+            reviews: [],
+            addReviewModalActive: false
         };
     }
 
     render() {
         return (
             <div className="container">
+                <AddReviewModal isOpen={this.state.addReviewModalActive} />
                 <ReviewsContainer reviews={this.state.reviews} />
             </div>
         );
