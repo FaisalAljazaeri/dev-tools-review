@@ -1,7 +1,16 @@
 const router = require("express").Router();
 const Review = require("../models/Review");
+const validateReview = require("../validation/reviewValidation");
 
 router.post("/", async (req, res) => {
+    // validate submitted data before adding a new review
+    const errorMessages = validateReview(req.body);
+    if (errorMessages.length > 0) {
+        return res.status(400).send({
+            messages: errorMessages
+        });
+    }
+
     // Create a new review object based on the recieved data
     const review = new Review({
         itemName: req.body.itemName,
