@@ -1,6 +1,6 @@
 #add-button {
-    position: absolute;
-    right: 0;
+    position: fixed;
     bottom: 0;
-    margin: 20px;
+    right: 0;
+    margin: 15px;
 }
