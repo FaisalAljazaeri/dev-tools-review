@@ -24,6 +24,35 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
+    toggleRecommended = review => {
+        const updatedReview = {
+            ...review,
+            isRecommended: !review.isRecommended
+        };
+
+        this.updateReview(updatedReview);
+    };
+
+    updateReview = updatedReview => {
+        axios
+            .patch(`http://localhost:5000/api/reviews/${updatedReview._id}`, {
+                review: updatedReview
+            })
+            .then(res => {
+                const reviewsCopy = [...this.state.reviews];
+                const indexOfReviewToUpdate = reviewsCopy.indexOf(
+                    updatedReview
+                );
+
+                reviewsCopy.splice(indexOfReviewToUpdate, 1, res.data);
+
+                this.setState({
+                    reviews: reviewsCopy
+                });
+            })
+            .catch(err => console.log(err));
+    };
+
     deleteReview = reviewId => {
         axios
             .delete(`http://localhost:5000/api/reviews/${reviewId}`)
@@ -45,6 +74,7 @@ class App extends Component {
                 <ReviewsContainer
                     reviews={this.state.reviews}
                     deleteReview={this.deleteReview}
+                    toggleRecommended={this.toggleRecommended}
                 />
             </div>
         );

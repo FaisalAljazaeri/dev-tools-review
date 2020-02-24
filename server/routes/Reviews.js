@@ -38,17 +38,17 @@ router.get("/", async (req, res) => {
 });
 
 router.patch("/:reviewId", (req, res) => {
-    Review.findById(req.params.reviewId, async (err, review) => {
-        review.isRecommended = !review.isRecommended;
-
-        // Try to save the new review to the Database
-        try {
-            await review.save();
-            res.status(200).send({ review: review });
-        } catch (err) {
-            res.status(400).send(err);
+    Review.findByIdAndUpdate(
+        req.params.reviewId,
+        req.body.review,
+        { new: true, useFindAndModify: false },
+        (err, review) => {
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(review);
         }
-    });
+    );
 });
 
 router.delete("/:reviewId", (req, res) => {

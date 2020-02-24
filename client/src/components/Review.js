@@ -10,9 +10,7 @@ function Review(props) {
         : "fa fa-thumbs-down fa-lg dislike";
 
     const toggleRecommended = e => {
-        const { _id } = props.review;
-
-        axios.patch(`http://localhost:5000/api/reviews/${_id}`);
+        props.toggleRecommended(props.review);
     };
 
     const deleteReview = e => {

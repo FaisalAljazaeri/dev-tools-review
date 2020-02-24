@@ -7,6 +7,10 @@ class ReviewsContainer extends Component {
         this.props.deleteReview(reviewId);
     };
 
+    toggleRecommended = review => {
+        this.props.toggleRecommended(review);
+    };
+
     render() {
         const allReviews = this.props.reviews.map((review, index) => {
             return (
@@ -14,6 +18,7 @@ class ReviewsContainer extends Component {
                     key={index}
                     review={review}
                     deleteReview={this.props.deleteReview}
+                    toggleRecommended={this.toggleRecommended}
                 />
             );
         });
