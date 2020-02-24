@@ -29,28 +29,31 @@ class Review extends Component {
         const { itemName, content, itemImgSrc } = this.props.review;
 
         const recommendationIconClasses = this.state.isRecommended
-            ? "fa fa-thumbs-up fa-2x like"
-            : "fa fa-thumbs-down fa-2x dislike";
+            ? "fa fa-thumbs-up fa-lg like"
+            : "fa fa-thumbs-down fa-lg dislike";
 
         return (
             <div className="review-card">
                 <div className="img-container">
                     <img src={itemImgSrc} alt={itemName} />
                 </div>
-                <div className="review-content">
-                    <h3>{itemName}</h3>
-                    <p>{content}</p>
-                </div>
+                <div className="card-body">
+                    <div className="review-content">
+                        <h3>{itemName}</h3>
+                        <p>{content}</p>
+                    </div>
 
-                <div className="review-controls">
-                    <i
-                        className={recommendationIconClasses}
-                        onClick={this.toggleRecommended}
-                    />
-                    <i
-                        className="fa fa-trash fa-2x"
-                        onClick={this.deleteReview}
-                    />
+                    <div className="review-controls">
+                        <i
+                            className="fa fa-trash fa-lg red"
+                            onClick={this.deleteReview}
+                        />
+                        <i className="fa fa-edit fa-lg blue" id="edit-icon" />
+                        <i
+                            className={recommendationIconClasses}
+                            onClick={this.toggleRecommended}
+                        />
+                    </div>
                 </div>
             </div>
         );

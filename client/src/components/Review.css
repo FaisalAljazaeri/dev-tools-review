@@ -17,15 +17,21 @@
     border-radius: 5px 5px 0 0;
 }
 
+.card-body {
+    width: 30%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .review-content {
-    width: 80%;
+    font-size: 0.85rem;
 }
 
 .review-controls {
-    width: 8%;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 img {
@@ -35,13 +41,21 @@ img {
 
 h3,
 p {
-    margin: 8px;
+    margin: 5px;
     text-align: center;
+}
+
+h3 {
+    font-size: 1.2rem;
 }
 
 i {
     cursor: pointer;
     margin: 10px;
+}
+
+#edit-icon {
+    margin-top: 11px;
 }
 
 .like {
@@ -50,4 +64,12 @@ i {
 
 .dislike {
     color: #b61414;
+}
+
+.red {
+    color: #b61414;
+}
+
+.blue {
+    color: #4299fd;
 }
