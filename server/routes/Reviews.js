@@ -51,4 +51,14 @@ router.patch("/:reviewId", (req, res) => {
     });
 });
 
+router.delete("/:reviewId", (req, res) => {
+    Review.findByIdAndDelete(req.params.reviewId, (err, review) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+
+        return res.status(200).send(review._id);
+    });
+});
+
 module.exports = router;

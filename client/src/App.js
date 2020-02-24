@@ -24,11 +24,28 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
+    deleteReview = reviewId => {
+        axios
+            .delete(`http://localhost:5000/api/reviews/${reviewId}`)
+            .then(res => {
+                const newReviews = [...this.state.reviews].filter(
+                    review => reviewId !== review._id
+                );
+
+                this.setState({
+                    reviews: newReviews
+                });
+            });
+    };
+
     render() {
         return (
             <div className="container">
                 <AddReviewModal addReview={this.addReview} />
-                <ReviewsContainer reviews={this.state.reviews} />
+                <ReviewsContainer
+                    reviews={this.state.reviews}
+                    deleteReview={this.deleteReview}
+                />
             </div>
         );
     }

@@ -23,6 +23,10 @@ class Review extends Component {
         });
     };
 
+    deleteReview = e => {
+        this.props.deleteReview(this.props.review._id);
+    };
+
     render() {
         const { itemName, content, itemImgSrc } = this.props.review;
 
@@ -44,6 +48,10 @@ class Review extends Component {
                     <i
                         className={recommendationIconClasses}
                         onClick={this.toggleRecommended}
+                    />
+                    <i
+                        className="fa fa-trash fa-2x"
+                        onClick={this.deleteReview}
                     />
                 </div>
             </div>
