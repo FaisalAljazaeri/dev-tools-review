@@ -8,7 +8,7 @@ class AddReviewModal extends Component {
         super(props);
 
         this.state = {
-            isOpen: this.props.isOpen
+            isOpen: false
         };
     }
 
