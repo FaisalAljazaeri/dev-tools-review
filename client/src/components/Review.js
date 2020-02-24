@@ -18,9 +18,7 @@ class Review extends Component {
             isRecommended: !this.state.isRecommended
         });
 
-        axios.patch(`http://localhost:5000/api/reviews/${_id}`, {
-            reviewId: _id
-        });
+        axios.patch(`http://localhost:5000/api/reviews/${_id}`);
     };
 
     deleteReview = e => {

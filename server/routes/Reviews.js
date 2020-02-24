@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
 });
 
 router.patch("/:reviewId", (req, res) => {
-    Review.findById(req.body.reviewId, async (err, review) => {
+    Review.findById(req.params.reviewId, async (err, review) => {
         review.isRecommended = !review.isRecommended;
 
         // Try to save the new review to the Database
