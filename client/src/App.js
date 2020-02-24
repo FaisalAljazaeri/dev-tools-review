@@ -44,8 +44,8 @@ class App extends Component {
             })
             .then(res => {
                 const reviewsCopy = [...this.state.reviews];
-                const indexOfReviewToUpdate = reviewsCopy.indexOf(
-                    updatedReview
+                const indexOfReviewToUpdate = reviewsCopy.findIndex(
+                    review => updatedReview._id === review._id
                 );
 
                 reviewsCopy.splice(indexOfReviewToUpdate, 1, res.data);
