@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Modal, Button, ModalHeader, ModalBody } from "reactstrap";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import EditReviewForm from "./EditReviewForm";
 
 class AddReviewModal extends Component {
     constructor(props) {
@@ -16,9 +17,9 @@ class AddReviewModal extends Component {
         });
     };
 
-    createReview = review => {
+    editReview = review => {
+        this.props.editReview(review);
         this.toggle();
-        // this.props.addReview(review);
     };
 
     render() {
@@ -34,10 +35,11 @@ class AddReviewModal extends Component {
                         Add Review For New Item
                     </ModalHeader>
                     <ModalBody>
-                        {/* <AddReviewForm
+                        <EditReviewForm
+                            review={this.props.review}
+                            editReview={this.editReview}
                             closeModal={this.toggle}
-                            createReview={this.createReview}
-                        /> */}
+                        />
                     </ModalBody>
                 </Modal>
             </div>

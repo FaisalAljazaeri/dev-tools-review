@@ -33,6 +33,10 @@ class App extends Component {
         this.updateReview(updatedReview);
     };
 
+    editReview = updatedReview => {
+        this.updateReview(updatedReview);
+    };
+
     updateReview = updatedReview => {
         axios
             .patch(`http://localhost:5000/api/reviews/${updatedReview._id}`, {
@@ -75,6 +79,7 @@ class App extends Component {
                     reviews={this.state.reviews}
                     deleteReview={this.deleteReview}
                     toggleRecommended={this.toggleRecommended}
+                    editReview={this.editReview}
                 />
             </div>
         );

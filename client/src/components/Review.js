@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Review.css";
 import EditReviewModal from "./EditReviewModal";
 
@@ -14,7 +14,11 @@ function Review(props) {
     };
 
     const deleteReview = e => {
-        this.props.deleteReview(props.review._id);
+        props.deleteReview(props.review._id);
+    };
+
+    const editReview = review => {
+        props.editReview(review);
     };
 
     return (
@@ -33,7 +37,10 @@ function Review(props) {
                         className="fa fa-trash fa-lg red"
                         onClick={deleteReview}
                     />
-                    <EditReviewModal />
+                    <EditReviewModal
+                        review={props.review}
+                        editReview={editReview}
+                    />
                     <i
                         className={recommendationIconClasses}
                         onClick={toggleRecommended}

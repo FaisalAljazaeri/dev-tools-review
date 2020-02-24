@@ -11,6 +11,10 @@ class ReviewsContainer extends Component {
         this.props.toggleRecommended(review);
     };
 
+    editReview = review => {
+        this.props.editReview(review);
+    };
+
     render() {
         const allReviews = this.props.reviews.map((review, index) => {
             return (
@@ -19,6 +23,7 @@ class ReviewsContainer extends Component {
                     review={review}
                     deleteReview={this.props.deleteReview}
                     toggleRecommended={this.toggleRecommended}
+                    editReview={this.editReview}
                 />
             );
         });
