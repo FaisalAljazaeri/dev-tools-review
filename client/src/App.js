@@ -24,20 +24,11 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
-    changeRecommendation = reviewId => {
-        axios.patch(`http://localhost:5000/api/reviews/${reviewId}`, {
-            reviewId: reviewId
-        });
-    };
-
     render() {
         return (
             <div className="container">
                 <AddReviewModal addReview={this.addReview} />
-                <ReviewsContainer
-                    reviews={this.state.reviews}
-                    changeRecommendation={this.changeRecommendation}
-                />
+                <ReviewsContainer reviews={this.state.reviews} />
             </div>
         );
     }

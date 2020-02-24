@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Review.css";
+import axios from "axios";
 
 class Review extends Component {
     constructor(props) {
@@ -11,11 +12,15 @@ class Review extends Component {
     }
 
     toggleRecommended = e => {
+        const { _id } = this.props.review;
+
         this.setState({
             isRecommended: !this.state.isRecommended
         });
 
-        this.props.changeRecommendation(this.props.review._id);
+        axios.patch(`http://localhost:5000/api/reviews/${_id}`, {
+            reviewId: _id
+        });
     };
 
     render() {
