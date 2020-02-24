@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Review.css";
-import axios from "axios";
+import EditReviewModal from "./EditReviewModal";
 
 function Review(props) {
     const { itemName, content, itemImgSrc, isRecommended } = props.review;
@@ -33,7 +33,7 @@ function Review(props) {
                         className="fa fa-trash fa-lg red"
                         onClick={deleteReview}
                     />
-                    <i className="fa fa-edit fa-lg blue" id="edit-icon" />
+                    <EditReviewModal />
                     <i
                         className={recommendationIconClasses}
                         onClick={toggleRecommended}
