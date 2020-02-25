@@ -1,6 +1,7 @@
 import React from "react";
 import "./Review.css";
 import EditReviewModal from "./EditReviewModal";
+import DeleteReviewModal from "./DeleteReviewModal";
 
 function Review(props) {
     const { itemName, content, itemImgSrc, isRecommended } = props.review;
@@ -33,10 +34,7 @@ function Review(props) {
                 </div>
 
                 <div className="review-controls">
-                    <i
-                        className="fa fa-trash fa-lg red"
-                        onClick={deleteReview}
-                    />
+                    <DeleteReviewModal deleteReview={deleteReview} />
                     <EditReviewModal
                         review={props.review}
                         editReview={editReview}
