@@ -71,9 +71,14 @@ class App extends Component {
     };
 
     deleteNotRecommendedReviews = () => {
-        this.setState({
-            reviews: this.state.reviews.filter(review => !review.isRecommended)
-        });
+        axios
+            .delete("http://localhost:5000/api/reviews/notrecommended")
+            .then(res => {
+                this.setState({
+                    reviews: res.data
+                });
+            })
+            .catch(err => console.log(err));
     };
 
     deleteReview = reviewId => {

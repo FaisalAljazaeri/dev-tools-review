@@ -51,6 +51,22 @@ router.patch("/:reviewId", (req, res) => {
     );
 });
 
+router.delete("/notrecommended", (req, res) => {
+    Review.deleteMany({ isRecommended: false }, err => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+
+        Review.find({}, (err, reviews) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+
+            return res.status(200).send(reviews);
+        });
+    });
+});
+
 router.delete("/:reviewId", (req, res) => {
     Review.findByIdAndDelete(req.params.reviewId, (err, review) => {
         if (err) {
