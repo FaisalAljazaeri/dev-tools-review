@@ -59,9 +59,14 @@ class App extends Component {
     };
 
     deleteAllReviews = () => {
-        this.setState({
-            reviews: []
-        });
+        axios
+            .delete("http://localhost:5000/api/reviews")
+            .then(res => {
+                this.setState({
+                    reviews: res.data
+                });
+            })
+            .catch(err => console.log(err));
     };
 
     deleteReview = reviewId => {

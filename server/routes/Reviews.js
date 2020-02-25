@@ -61,4 +61,14 @@ router.delete("/:reviewId", (req, res) => {
     });
 });
 
+router.delete("/", (req, res) => {
+    Review.deleteMany({}, err => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+
+        return res.status(200).send([]);
+    });
+});
+
 module.exports = router;
