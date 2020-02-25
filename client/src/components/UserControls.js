@@ -45,6 +45,17 @@ class UserControls extends Component {
         this.props.addReview(review);
     };
 
+    toggleDeleteAllReviews = () => {
+        this.toggleNested();
+        this.setState({
+            nestedModalBody: "deleteAll"
+        });
+    };
+
+    deleteAllReviews = () => {
+        this.props.deleteAllReviews();
+    };
+
     render() {
         return (
             <div>
@@ -67,8 +78,15 @@ class UserControls extends Component {
                         <Button color="success" onClick={this.toggleAddReview}>
                             Add Review
                         </Button>
+                        <Button
+                            color="danger"
+                            onClick={this.toggleDeleteAllReviews}
+                        >
+                            Delete All Reviews
+                        </Button>
                         <ReviewsControlModal
                             addReview={this.addReview}
+                            deleteAllReviews={this.deleteAllReviews}
                             modalBody={this.state.nestedModalBody}
                             nestedModal={this.state.nestedModal}
                             toggle={this.toggle}

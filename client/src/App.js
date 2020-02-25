@@ -109,6 +109,7 @@ class App extends Component {
                 <UserControls
                     addReview={this.addReview}
                     deleteAllReviews={this.deleteAllReviews}
+                    deleteAllReviews={this.deleteAllReviews}
                     deleteNotRecommendedReviews={
                         this.deleteNotRecommendedReviews
                     }
