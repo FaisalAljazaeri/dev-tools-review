@@ -4,6 +4,7 @@ import "./App.css";
 import ReviewsContainer from "./components/ReviewsContainer";
 import AddReviewModal from "./components/AddReviewModal";
 import DeleteAllReviewsModal from "./components/DeleteAllReviewsModal";
+import DeleteNotRecommendedReviewsModal from "./components/DeleteNotRecommendedReviewsModal";
 
 class App extends Component {
     constructor(props) {
@@ -69,6 +70,12 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
+    deleteNotRecommendedReviews = () => {
+        this.setState({
+            reviews: this.state.reviews.filter(review => !review.isRecommended)
+        });
+    };
+
     deleteReview = reviewId => {
         axios
             .delete(`http://localhost:5000/api/reviews/${reviewId}`)
@@ -89,6 +96,11 @@ class App extends Component {
                 <AddReviewModal addReview={this.addReview} />
                 <DeleteAllReviewsModal
                     deleteAllReviews={this.deleteAllReviews}
+                />
+                <DeleteNotRecommendedReviewsModal
+                    deleteNotRecommendedReviews={
+                        this.deleteNotRecommendedReviews
+                    }
                 />
                 <ReviewsContainer
                     reviews={this.state.reviews}
