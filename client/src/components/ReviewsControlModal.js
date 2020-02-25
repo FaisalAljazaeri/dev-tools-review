@@ -12,6 +12,11 @@ function ReviewsControlModal(props) {
         props.toggleAll();
     };
 
+    const deleteNotRecommendedReviews = () => {
+        props.deleteNotRecommendedReviews();
+        props.toggleAll();
+    };
+
     const getBodyContent = modalBody => {
         if (modalBody === "add") {
             return (
@@ -25,6 +30,18 @@ function ReviewsControlModal(props) {
                 <Fragment>
                     are you sure you want to delete all items?
                     <Button color="danger" onClick={deleteAllReviews}>
+                        Confirm
+                    </Button>
+                </Fragment>
+            );
+        } else {
+            return (
+                <Fragment>
+                    are you sure you want to delete not recommended items?
+                    <Button
+                        color="danger"
+                        onClick={deleteNotRecommendedReviews}
+                    >
                         Confirm
                     </Button>
                 </Fragment>

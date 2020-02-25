@@ -56,6 +56,17 @@ class UserControls extends Component {
         this.props.deleteAllReviews();
     };
 
+    toggleDeleteNotRecommendedReviews = () => {
+        this.toggleNested();
+        this.setState({
+            nestedModalBody: "deleteNotRecommended"
+        });
+    };
+
+    deleteNotRecommendedReviews = () => {
+        this.props.deleteNotRecommendedReviews();
+    };
+
     render() {
         return (
             <div>
@@ -79,6 +90,12 @@ class UserControls extends Component {
                             Add Review
                         </Button>
                         <Button
+                            color="secondary"
+                            onClick={this.toggleDeleteNotRecommendedReviews}
+                        >
+                            Delete All Not Recommended Reviews
+                        </Button>
+                        <Button
                             color="danger"
                             onClick={this.toggleDeleteAllReviews}
                         >
@@ -87,6 +104,9 @@ class UserControls extends Component {
                         <ReviewsControlModal
                             addReview={this.addReview}
                             deleteAllReviews={this.deleteAllReviews}
+                            deleteNotRecommendedReviews={
+                                this.deleteNotRecommendedReviews
+                            }
                             modalBody={this.state.nestedModalBody}
                             nestedModal={this.state.nestedModal}
                             toggle={this.toggle}
