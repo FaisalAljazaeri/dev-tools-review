@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import AddReviewForm from "./AddReviewForm";
 
@@ -17,39 +17,45 @@ function ReviewsControlModal(props) {
         props.toggleAll();
     };
 
-    const getBodyContent = modalBody => {
-        if (modalBody === "add") {
+    const getBodyContent = modalType => {
+        if (modalType === "add") {
             return (
                 <AddReviewForm
                     createReview={addReview}
                     toggleAll={props.toggleAll}
                 />
             );
-        } else if (modalBody === "deleteAll") {
-            return (
-                <Fragment>
-                    are you sure you want to delete all items?
-                    <Button color="danger" onClick={deleteAllReviews}>
-                        Confirm
-                    </Button>
-                </Fragment>
-            );
+        } else if (modalType === "deleteAll") {
+            return <div>are you sure you want to delete all items?</div>;
         } else {
             return (
-                <Fragment>
+                <div>
                     are you sure you want to delete not recommended items?
-                    <Button
-                        color="danger"
-                        onClick={deleteNotRecommendedReviews}
-                    >
-                        Confirm
-                    </Button>
-                </Fragment>
+                </div>
             );
         }
     };
 
-    const bodyContent = getBodyContent(props.modalBody);
+    const getFooterContent = modalType => {
+        if (modalType === "deleteNotRecommended") {
+            return (
+                <Button color="danger" onClick={deleteNotRecommendedReviews}>
+                    Confirm
+                </Button>
+            );
+        } else if (modalType === "deleteAll") {
+            return (
+                <Button color="danger" onClick={deleteAllReviews}>
+                    Confirm
+                </Button>
+            );
+        } else {
+            return "";
+        }
+    };
+
+    const bodyContent = getBodyContent(props.modalType);
+    const footerContent = getFooterContent(props.modalType);
 
     return (
         <Modal
@@ -60,11 +66,9 @@ function ReviewsControlModal(props) {
             <ModalHeader>Nested Modal title</ModalHeader>
             <ModalBody>{bodyContent}</ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={props.toggleNested}>
-                    Done
-                </Button>{" "}
-                <Button color="secondary" onClick={props.toggleAll}>
-                    All Done
+                {footerContent}{" "}
+                <Button color="secondary" onClick={props.toggleNested}>
+                    Cancel
                 </Button>
             </ModalFooter>
         </Modal>

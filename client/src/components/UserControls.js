@@ -10,7 +10,7 @@ class UserControls extends Component {
             isOpen: false,
             nestedModal: false,
             closeAll: false,
-            nestedModalBody: ""
+            nestedModalType: ""
         };
     }
 
@@ -37,7 +37,7 @@ class UserControls extends Component {
     toggleAddReview = () => {
         this.toggleNested();
         this.setState({
-            nestedModalBody: "add"
+            nestedModalType: "add"
         });
     };
 
@@ -48,7 +48,7 @@ class UserControls extends Component {
     toggleDeleteAllReviews = () => {
         this.toggleNested();
         this.setState({
-            nestedModalBody: "deleteAll"
+            nestedModalType: "deleteAll"
         });
     };
 
@@ -59,7 +59,7 @@ class UserControls extends Component {
     toggleDeleteNotRecommendedReviews = () => {
         this.toggleNested();
         this.setState({
-            nestedModalBody: "deleteNotRecommended"
+            nestedModalType: "deleteNotRecommended"
         });
     };
 
@@ -71,21 +71,13 @@ class UserControls extends Component {
         return (
             <div>
                 <Button color="danger" onClick={this.toggle}>
-                    Label
+                    Actions
                 </Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>
+                        Select an Action to Perform
+                    </ModalHeader>
                     <ModalBody>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                        <br />
                         <Button color="success" onClick={this.toggleAddReview}>
                             Add Review
                         </Button>
@@ -107,7 +99,7 @@ class UserControls extends Component {
                             deleteNotRecommendedReviews={
                                 this.deleteNotRecommendedReviews
                             }
-                            modalBody={this.state.nestedModalBody}
+                            modalType={this.state.nestedModalType}
                             nestedModal={this.state.nestedModal}
                             toggle={this.toggle}
                             toggleNested={this.toggleNested}
@@ -116,9 +108,6 @@ class UserControls extends Component {
                         />
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>
-                            Do Something
-                        </Button>{" "}
                         <Button color="secondary" onClick={this.toggle}>
                             Cancel
                         </Button>

@@ -96,16 +96,6 @@ class App extends Component {
     render() {
         return (
             <div className="container">
-                {/* <AddReviewModal addReview={this.addReview} />
-                <DeleteAllReviewsModal
-                    deleteAllReviews={this.deleteAllReviews}
-                />
-                <DeleteNotRecommendedReviewsModal
-                    deleteNotRecommendedReviews={
-                        this.deleteNotRecommendedReviews
-                    }
-                /> */}
-
                 <UserControls
                     addReview={this.addReview}
                     deleteAllReviews={this.deleteAllReviews}
