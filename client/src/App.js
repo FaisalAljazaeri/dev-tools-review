@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import ReviewsContainer from "./components/ReviewsContainer";
 import AddReviewModal from "./components/AddReviewModal";
+import DeleteAllReviewsModal from "./components/DeleteAllReviewsModal";
 
 class App extends Component {
     constructor(props) {
@@ -57,6 +58,12 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
+    deleteAllReviews = () => {
+        this.setState({
+            reviews: []
+        });
+    };
+
     deleteReview = reviewId => {
         axios
             .delete(`http://localhost:5000/api/reviews/${reviewId}`)
@@ -75,6 +82,9 @@ class App extends Component {
         return (
             <div className="container">
                 <AddReviewModal addReview={this.addReview} />
+                <DeleteAllReviewsModal
+                    deleteAllReviews={this.deleteAllReviews}
+                />
                 <ReviewsContainer
                     reviews={this.state.reviews}
                     deleteReview={this.deleteReview}
