@@ -22,6 +22,7 @@ class AddReviewForm extends Component {
     submitHandler = e => {
         e.preventDefault();
         this.props.createReview(this.state);
+        this.props.toggleAll();
     };
 
     render() {
@@ -71,10 +72,10 @@ class AddReviewForm extends Component {
                 </FormGroup>
                 <Button type="submit" color="primary">
                     Submit
-                </Button>{" "}
-                <Button color="secondary" onClick={this.props.closeModal}>
-                    Cancel
                 </Button>
+                {/* <Button color="secondary" onClick={this.props.closeModal}>
+                    Cancel
+                </Button> */}
             </Form>
         );
     }

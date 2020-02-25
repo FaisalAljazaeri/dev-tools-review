@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
 import ReviewsContainer from "./components/ReviewsContainer";
-import AddReviewModal from "./components/AddReviewModal";
-import DeleteAllReviewsModal from "./components/DeleteAllReviewsModal";
-import DeleteNotRecommendedReviewsModal from "./components/DeleteNotRecommendedReviewsModal";
+import UserControls from "./components/UserControls";
 
 class App extends Component {
     constructor(props) {
@@ -98,7 +96,7 @@ class App extends Component {
     render() {
         return (
             <div className="container">
-                <AddReviewModal addReview={this.addReview} />
+                {/* <AddReviewModal addReview={this.addReview} />
                 <DeleteAllReviewsModal
                     deleteAllReviews={this.deleteAllReviews}
                 />
@@ -106,7 +104,16 @@ class App extends Component {
                     deleteNotRecommendedReviews={
                         this.deleteNotRecommendedReviews
                     }
+                /> */}
+
+                <UserControls
+                    addReview={this.addReview}
+                    deleteAllReviews={this.deleteAllReviews}
+                    deleteNotRecommendedReviews={
+                        this.deleteNotRecommendedReviews
+                    }
                 />
+
                 <ReviewsContainer
                     reviews={this.state.reviews}
                     deleteReview={this.deleteReview}
