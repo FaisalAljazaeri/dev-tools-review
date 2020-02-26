@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/dev-tools-review/static/css/main.6b054486.chunk.css",
+    "main.js": "/dev-tools-review/static/js/main.2d7d5dc4.chunk.js",
+    "main.js.map": "/dev-tools-review/static/js/main.2d7d5dc4.chunk.js.map",
+    "runtime-main.js": "/dev-tools-review/static/js/runtime-main.e823ba2f.js",
+    "runtime-main.js.map": "/dev-tools-review/static/js/runtime-main.e823ba2f.js.map",
+    "static/css/2.2b1e90c7.chunk.css": "/dev-tools-review/static/css/2.2b1e90c7.chunk.css",
+    "static/js/2.00309c14.chunk.js": "/dev-tools-review/static/js/2.00309c14.chunk.js",
+    "static/js/2.00309c14.chunk.js.map": "/dev-tools-review/static/js/2.00309c14.chunk.js.map",
+    "index.html": "/dev-tools-review/index.html",
+    "precache-manifest.4fa2e0175f1f99a01e9994b0cbe42b92.js": "/dev-tools-review/precache-manifest.4fa2e0175f1f99a01e9994b0cbe42b92.js",
+    "service-worker.js": "/dev-tools-review/service-worker.js",
+    "static/css/2.2b1e90c7.chunk.css.map": "/dev-tools-review/static/css/2.2b1e90c7.chunk.css.map",
+    "static/css/main.6b054486.chunk.css.map": "/dev-tools-review/static/css/main.6b054486.chunk.css.map",
+    "static/js/2.00309c14.chunk.js.LICENSE.txt": "/dev-tools-review/static/js/2.00309c14.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/dev-tools-review/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e823ba2f.js",
+    "static/css/2.2b1e90c7.chunk.css",
+    "static/js/2.00309c14.chunk.js",
+    "static/css/main.6b054486.chunk.css",
+    "static/js/main.2d7d5dc4.chunk.js"
+  ]
+}
