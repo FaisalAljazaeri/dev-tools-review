@@ -73,3 +73,27 @@ i {
 .blue {
     color: #4299fd;
 }
+
+@media (max-width: 600px) {
+    .review-card {
+        flex-direction: column;
+        margin-top: 50px;
+        width: 100%;
+        height: 250px;
+    }
+
+    .img-container {
+        border: none;
+        margin: 0 25%;
+        width: 50%;
+        height: 30%;
+    }
+
+    .card-body {
+        width: 100%;
+    }
+
+    .review-content {
+        margin-top: 10px;
+    }
+}
