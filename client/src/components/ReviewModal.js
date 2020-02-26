@@ -77,7 +77,7 @@ class ReviewModal extends Component {
                 />
             );
         } else if (modalType === "github") {
-            return `Total Repositories on Github = ${this.state.githubReposCount}`;
+            return `Total Repositories on Github for ${this.props.review.itemName} is ${this.state.githubReposCount}`;
         } else {
             return "";
         }
@@ -110,7 +110,7 @@ class ReviewModal extends Component {
                 <i
                     className="fa fa-edit fa-lg blue"
                     id="edit-icon"
-                    onClick={this.toggle}
+                    onClick={this.toggleEdit}
                 />
                 <Modal isOpen={this.state.isOpen} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>
