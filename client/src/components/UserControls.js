@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import "./UserControls.css";
 import ReviewsControlModal from "./ReviewsControlModal";
 
 class UserControls extends Component {
@@ -70,7 +71,7 @@ class UserControls extends Component {
     render() {
         return (
             <div>
-                <Button color="danger" onClick={this.toggle}>
+                <Button id="action-btn" color="success" onClick={this.toggle}>
                     Actions
                 </Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggle}>
