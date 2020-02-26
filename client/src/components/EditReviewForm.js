@@ -60,9 +60,6 @@ class EditReviewForm extends Component {
                 </FormGroup>
                 <Button type="submit" color="primary">
                     Submit
-                </Button>{" "}
-                <Button color="secondary" onClick={this.props.closeModal}>
-                    Cancel
                 </Button>
             </Form>
         );

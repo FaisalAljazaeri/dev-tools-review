@@ -1,6 +1,5 @@
 import React from "react";
 import "./Review.css";
-import EditReviewModal from "./EditReviewModal";
 import ReviewModal from "./ReviewModal";
 
 function Review(props) {
@@ -35,13 +34,9 @@ function Review(props) {
 
                 <div className="review-controls">
                     <ReviewModal
+                        editReview={editReview}
                         deleteReview={deleteReview}
                         review={props.review}
-                    />
-
-                    <EditReviewModal
-                        review={props.review}
-                        editReview={editReview}
                     />
                     <i
                         className={recommendationIconClasses}

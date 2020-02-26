@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
+import EditReviewForm from "./EditReviewForm";
 
 class ReviewModal extends Component {
     constructor(props) {
@@ -25,14 +26,30 @@ class ReviewModal extends Component {
         this.toggle();
     };
 
+    toggleEdit = () => {
+        this.setState({
+            modalType: "edit"
+        });
+
+        this.toggle();
+    };
+
     deleteReview = e => {
         this.props.deleteReview(this.props.review._id);
+        this.toggle();
+    };
+
+    editReview = review => {
+        console.log(review);
+        this.props.editReview(review);
         this.toggle();
     };
 
     getModalHeader = modalType => {
         if (modalType === "delete") {
             return "Deleting Selected Item";
+        } else {
+            return "Editing Selected Review";
         }
     };
 
@@ -40,21 +57,24 @@ class ReviewModal extends Component {
         if (modalType === "delete") {
             return "Are you sure you want to delete?";
         } else {
+            return (
+                <EditReviewForm
+                    review={this.props.review}
+                    editReview={this.editReview}
+                />
+            );
         }
     };
 
     getModalFooter = modalType => {
         if (modalType === "delete") {
             return (
-                <Fragment>
-                    <Button color="secondary" onClick={this.toggle}>
-                        Cancel
-                    </Button>
-                    <Button color="danger" onClick={this.deleteReview}>
-                        Delete
-                    </Button>
-                </Fragment>
+                <Button color="danger" onClick={this.deleteReview}>
+                    Delete
+                </Button>
             );
+        } else {
+            return "";
         }
     };
 
@@ -69,12 +89,22 @@ class ReviewModal extends Component {
                     className="fa fa-trash fa-lg red"
                     onClick={this.toggleDelete}
                 />
+                <i
+                    className="fa fa-edit fa-lg blue"
+                    id="edit-icon"
+                    onClick={this.toggle}
+                />
                 <Modal isOpen={this.state.isOpen} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>
                         {modalHeader}
                     </ModalHeader>
                     <ModalBody>{modalBody}</ModalBody>
-                    <ModalFooter>{modalFooter}</ModalFooter>
+                    <ModalFooter>
+                        {modalFooter}{" "}
+                        <Button color="secondary" onClick={this.toggle}>
+                            Cancel
+                        </Button>
+                    </ModalFooter>
                 </Modal>
             </div>
         );
