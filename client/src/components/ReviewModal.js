@@ -40,7 +40,6 @@ class ReviewModal extends Component {
     };
 
     editReview = review => {
-        console.log(review);
         this.props.editReview(review);
         this.toggle();
     };
