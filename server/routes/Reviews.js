@@ -37,7 +37,9 @@ router.get("/", async (req, res) => {
     });
 });
 
+// Route to edit a specific Review by ID
 router.patch("/:reviewId", (req, res) => {
+    // Find the Review with the ID and updated it with the recieved object
     Review.findByIdAndUpdate(
         req.params.reviewId,
         req.body.review,
@@ -51,12 +53,15 @@ router.patch("/:reviewId", (req, res) => {
     );
 });
 
+// Route for deleting all reviews that are not recommended 
 router.delete("/notrecommended", (req, res) => {
+    // Filter for all reviews that are not recommended and delete them
     Review.deleteMany({ isRecommended: false }, err => {
         if (err) {
             return res.status(500).send(err);
         }
 
+        // Return all the rest of the reviews to the client (So it can change its state)
         Review.find({}, (err, reviews) => {
             if (err) {
                 return res.status(500).send(err);
@@ -67,7 +72,9 @@ router.delete("/notrecommended", (req, res) => {
     });
 });
 
+// Route to delete a review by a specific ID
 router.delete("/:reviewId", (req, res) => {
+    // Find the review with the specified ID parameter and delete it fromt the DB
     Review.findByIdAndDelete(req.params.reviewId, (err, review) => {
         if (err) {
             return res.status(400).send(err);
@@ -77,6 +84,7 @@ router.delete("/:reviewId", (req, res) => {
     });
 });
 
+// Router to delete all the Reviews from the DB collection
 router.delete("/", (req, res) => {
     Review.deleteMany({}, err => {
         if (err) {
