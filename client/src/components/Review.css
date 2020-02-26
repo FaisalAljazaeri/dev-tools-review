@@ -84,9 +84,10 @@ i {
 
     .img-container {
         border: none;
+        border-bottom: 2px solid #ccc;
         margin: 0 25%;
         width: 50%;
-        height: 30%;
+        height: 32%;
     }
 
     .card-body {
