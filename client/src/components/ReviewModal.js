@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import EditReviewForm from "./EditReviewForm";
+import axios from "axios";
 
 class ReviewModal extends Component {
     constructor(props) {
@@ -8,7 +9,8 @@ class ReviewModal extends Component {
 
         this.state = {
             isOpen: false,
-            modalType: ""
+            modalType: "",
+            githubReposCount: 0
         };
     }
 
@@ -34,6 +36,14 @@ class ReviewModal extends Component {
         this.toggle();
     };
 
+    toggleGithub = () => {
+        this.setState({
+            modalType: "github"
+        });
+
+        this.toggle();
+    };
+
     deleteReview = e => {
         this.props.deleteReview(this.props.review._id);
         this.toggle();
@@ -47,21 +57,29 @@ class ReviewModal extends Component {
     getModalHeader = modalType => {
         if (modalType === "delete") {
             return "Deleting Selected Item";
-        } else {
+        } else if (modalType === "edit") {
             return "Editing Selected Review";
+        } else if (modalType === "github") {
+            return "Github Stats";
+        } else {
+            return "";
         }
     };
 
     getModalBody = modalType => {
         if (modalType === "delete") {
             return "Are you sure you want to delete?";
-        } else {
+        } else if (modalType === "edit") {
             return (
                 <EditReviewForm
                     review={this.props.review}
                     editReview={this.editReview}
                 />
             );
+        } else if (modalType === "github") {
+            return `Total Repositories on Github = ${this.state.githubReposCount}`;
+        } else {
+            return "";
         }
     };
 
@@ -84,6 +102,7 @@ class ReviewModal extends Component {
 
         return (
             <div>
+                <i className="fa fa-github fa-lg" onClick={this.toggleGithub} />
                 <i
                     className="fa fa-trash fa-lg red"
                     onClick={this.toggleDelete}
@@ -107,6 +126,19 @@ class ReviewModal extends Component {
                 </Modal>
             </div>
         );
+    }
+
+    componentDidMount() {
+        axios
+            .get(
+                `https://api.github.com/search/repositories?q=${this.props.review.itemName}`
+            )
+            .then(res =>
+                this.setState({
+                    githubReposCount: res.data.total_count
+                })
+            )
+            .catch(err => console.log(err));
     }
 }
 
