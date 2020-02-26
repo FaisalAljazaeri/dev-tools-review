@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
+// Form Component for adding a new Review. It contains all required input fields to 
+// create a new review and once it's submitted its state (a new Review) is lifted to the APP.
 class AddReviewForm extends Component {
     constructor(props) {
         super(props);
@@ -13,12 +15,15 @@ class AddReviewForm extends Component {
         };
     }
 
+    // Handle change in form input values
     changehandler = e => {
         this.setState({
             [e.target.name]: e.target.value
         });
     };
 
+    // Handle form submission by sending the current state(new Review data) to the 
+    // UserControls componet and later that app where the review will be added to the list.
     submitHandler = e => {
         e.preventDefault();
         this.props.createReview(this.state);

@@ -3,10 +3,14 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "./UserControls.css";
 import ReviewsControlModal from "./ReviewsControlModal";
 
+// Modal Comonent that has three buttons(add review, delete all reviews, delete not recommended reviews)
+// each one of the buttons opens a nested modal with the content that is required to acheive the specific action.
 class UserControls extends Component {
     constructor(props) {
         super(props);
 
+        // State to control the open/closed state of this modal and its nested modal. as well as determine the
+        // type of the nested modal content ("add", "deleteAll", "deletedNotRecommended").
         this.state = {
             isOpen: false,
             nestedModal: false,
@@ -15,12 +19,14 @@ class UserControls extends Component {
         };
     }
 
+    // Toggle the modal open/close.
     toggle = () => {
         this.setState({
             isOpen: !this.state.isOpen
         });
     };
 
+    // Toggle the nested modal open/close.
     toggleNested = () => {
         this.setState({
             nestedModal: !this.state.nestedModal,
@@ -28,6 +34,7 @@ class UserControls extends Component {
         });
     };
 
+    // Toggle both modals open/close.
     toggleAll = () => {
         this.setState({
             nestedModal: !this.state.nestedModal,
@@ -35,6 +42,7 @@ class UserControls extends Component {
         });
     };
 
+    // When the Add review button is clicked set the state modal type and open the nested modal.
     toggleAddReview = () => {
         this.toggleNested();
         this.setState({
@@ -42,10 +50,12 @@ class UserControls extends Component {
         });
     };
 
+    // pass the new review to the App component to add it to the list.
     addReview = review => {
         this.props.addReview(review);
     };
 
+    // When the Delete All Reviews button is clicked set the state modal type and open the nested modal.
     toggleDeleteAllReviews = () => {
         this.toggleNested();
         this.setState({
@@ -53,10 +63,12 @@ class UserControls extends Component {
         });
     };
 
+    // Call the App method to delete all Reviews in the list.
     deleteAllReviews = () => {
         this.props.deleteAllReviews();
     };
 
+    // When the Delete Not Recommended Reviews button is clicked set the state modal type and open the nested modal.
     toggleDeleteNotRecommendedReviews = () => {
         this.toggleNested();
         this.setState({
@@ -64,6 +76,7 @@ class UserControls extends Component {
         });
     };
 
+    // Call the App method to Delete All Not Recommended Reviews.
     deleteNotRecommendedReviews = () => {
         this.props.deleteNotRecommendedReviews();
     };
