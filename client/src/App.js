@@ -95,7 +95,7 @@ class App extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="main-container">
                 <UserControls
                     addReview={this.addReview}
                     deleteAllReviews={this.deleteAllReviews}

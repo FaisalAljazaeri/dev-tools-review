@@ -71,9 +71,12 @@ class UserControls extends Component {
     render() {
         return (
             <div>
-                <Button id="action-btn" color="success" onClick={this.toggle}>
-                    Actions
-                </Button>
+                <i
+                    id="action-btn"
+                    className="fa fa-cog fa-2x"
+                    onClick={this.toggle}
+                />
+
                 <Modal isOpen={this.state.isOpen} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>
                         Select an Action to Perform
