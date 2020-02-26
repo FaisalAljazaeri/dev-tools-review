@@ -1,7 +1,7 @@
 import React from "react";
 import "./Review.css";
 import EditReviewModal from "./EditReviewModal";
-import DeleteReviewModal from "./DeleteReviewModal";
+import ReviewModal from "./ReviewModal";
 
 function Review(props) {
     const { itemName, content, itemImgSrc, isRecommended } = props.review;
@@ -14,8 +14,8 @@ function Review(props) {
         props.toggleRecommended(props.review);
     };
 
-    const deleteReview = e => {
-        props.deleteReview(props.review._id);
+    const deleteReview = reviewId => {
+        props.deleteReview(reviewId);
     };
 
     const editReview = review => {
@@ -34,7 +34,11 @@ function Review(props) {
                 </div>
 
                 <div className="review-controls">
-                    <DeleteReviewModal deleteReview={deleteReview} />
+                    <ReviewModal
+                        deleteReview={deleteReview}
+                        review={props.review}
+                    />
+
                     <EditReviewModal
                         review={props.review}
                         editReview={editReview}
