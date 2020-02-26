@@ -4,3 +4,14 @@
     right: 0;
     margin: 15px;
 }
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-buttons button {
+    margin: 5px;
+    width: 90%;
+}

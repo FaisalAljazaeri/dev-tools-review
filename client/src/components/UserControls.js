@@ -79,21 +79,26 @@ class UserControls extends Component {
                         Select an Action to Perform
                     </ModalHeader>
                     <ModalBody>
-                        <Button color="success" onClick={this.toggleAddReview}>
-                            Add Review
-                        </Button>
-                        <Button
-                            color="secondary"
-                            onClick={this.toggleDeleteNotRecommendedReviews}
-                        >
-                            Delete All Not Recommended Reviews
-                        </Button>
-                        <Button
-                            color="danger"
-                            onClick={this.toggleDeleteAllReviews}
-                        >
-                            Delete All Reviews
-                        </Button>
+                        <div className="modal-buttons">
+                            <Button
+                                color="success"
+                                onClick={this.toggleAddReview}
+                            >
+                                Add Review
+                            </Button>
+                            <Button
+                                color="secondary"
+                                onClick={this.toggleDeleteNotRecommendedReviews}
+                            >
+                                Delete All Not Recommended Reviews
+                            </Button>
+                            <Button
+                                color="danger"
+                                onClick={this.toggleDeleteAllReviews}
+                            >
+                                Delete All Reviews
+                            </Button>
+                        </div>
                         <ReviewsControlModal
                             addReview={this.addReview}
                             deleteAllReviews={this.deleteAllReviews}
