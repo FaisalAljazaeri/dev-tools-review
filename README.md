@@ -48,7 +48,7 @@ npm install
 ```
 
 ```bash
-npm run
+npm run start
 ```
 
 for both the Server and Client projects
