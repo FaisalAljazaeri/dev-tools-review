@@ -3,6 +3,8 @@ import axios from "axios";
 import "./App.css";
 import ReviewsContainer from "./components/ReviewsContainer";
 import UserControls from "./components/UserControls";
+import store from "./store";
+import { Provider } from "react-redux";
 
 class App extends Component {
     constructor(props) {
@@ -104,26 +106,28 @@ class App extends Component {
 
     render() {
         return (
-            <div className="main-container">
-                {/* Component Responsible for Modals used in: deleting all reviews, 
+            <Provider store={store}>
+                <div className="main-container">
+                    {/* Component Responsible for Modals used in: deleting all reviews, 
                 delete not recommended reviews, and adding new reviews */}
-                <UserControls
-                    addReview={this.addReview}
-                    deleteAllReviews={this.deleteAllReviews}
-                    deleteNotRecommendedReviews={
-                        this.deleteNotRecommendedReviews
-                    }
-                />
+                    <UserControls
+                        addReview={this.addReview}
+                        deleteAllReviews={this.deleteAllReviews}
+                        deleteNotRecommendedReviews={
+                            this.deleteNotRecommendedReviews
+                        }
+                    />
 
-                {/* Component that contains all individual Review Components, it's passes an array of all reviews
+                    {/* Component that contains all individual Review Components, it's passes an array of all reviews
                 to map over and make each element a Review Component*/}
-                <ReviewsContainer
-                    reviews={this.state.reviews}
-                    deleteReview={this.deleteReview}
-                    toggleRecommended={this.toggleRecommended}
-                    editReview={this.editReview}
-                />
-            </div>
+                    <ReviewsContainer
+                        // reviews={this.state.reviews}
+                        deleteReview={this.deleteReview}
+                        toggleRecommended={this.toggleRecommended}
+                        editReview={this.editReview}
+                    />
+                </div>
+            </Provider>
         );
     }
 
