@@ -19,7 +19,7 @@ export const addReview = newReview => dispatch => {
         .then(res =>
             dispatch({
                 type: NEW_REVIEW,
-                payload: res.data
+                payload: res.data.review
             })
         )
         .catch(err => console.log(err));

@@ -13,7 +13,6 @@ export default function(state = initialState, action) {
             };
         case NEW_REVIEW:
             return {
-                ...state,
                 reviews: [...state.reviews, action.payload]
             };
         default:
