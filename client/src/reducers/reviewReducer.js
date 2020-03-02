@@ -11,6 +11,11 @@ export default function(state = initialState, action) {
                 ...state,
                 reviews: action.payload
             };
+        case NEW_REVIEW:
+            return {
+                ...state,
+                reviews: [...state.reviews, action.payload]
+            };
         default:
             return state;
     }

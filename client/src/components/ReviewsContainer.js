@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./ReviewsContainer.css";
 import Review from "./Review";
-import store from "../store";
 import { connect } from "react-redux";
 import { getReviews } from "../actions/reviewActions";
 import PropTypes from "prop-types";

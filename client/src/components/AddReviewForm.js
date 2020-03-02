@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { addReview } from "../actions/reviewActions";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-// Form Component for adding a new Review. It contains all required input fields to 
+// Form Component for adding a new Review. It contains all required input fields to
 // create a new review and once it's submitted its state (a new Review) is lifted to the APP.
 class AddReviewForm extends Component {
     constructor(props) {
@@ -22,11 +25,12 @@ class AddReviewForm extends Component {
         });
     };
 
-    // Handle form submission by sending the current state(new Review data) to the 
+    // Handle form submission by sending the current state(new Review data) to the
     // UserControls componet and later that app where the review will be added to the list.
     submitHandler = e => {
         e.preventDefault();
-        this.props.createReview(this.state);
+        // this.props.createReview(this.state);
+        this.props.addReview(this.state);
         this.props.toggleAll();
     };
 
@@ -83,4 +87,8 @@ class AddReviewForm extends Component {
     }
 }
 
-export default AddReviewForm;
+AddReviewForm.propTypes = {
+    addReview: PropTypes.func.isRequired
+};
+
+export default connect(null, { addReview })(AddReviewForm);

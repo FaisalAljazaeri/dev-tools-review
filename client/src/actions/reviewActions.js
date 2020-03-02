@@ -13,7 +13,7 @@ export const getReviews = () => dispatch => {
         .catch(err => console.log(err));
 };
 
-export const addReviews = newReview => dispatch => {
+export const addReview = newReview => dispatch => {
     axios
         .post("http://localhost:5000/api/reviews", newReview)
         .then(res =>
