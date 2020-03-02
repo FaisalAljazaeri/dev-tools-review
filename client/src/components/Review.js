@@ -1,6 +1,9 @@
 import React from "react";
 import "./Review.css";
 import ReviewModal from "./ReviewModal";
+import { connect } from "react-redux";
+import { deleteReview } from "../actions/reviewActions";
+import PropTypes from "prop-types";
 
 // Component responsible for rendering every Review element Recieved from the ReviewContainer
 function Review(props) {
@@ -22,6 +25,7 @@ function Review(props) {
     // Triggered when the Delete Review Modal confirmation button is clicked. It calls the delete method
     // in the APP and passes it the review to be deleted.
     const deleteReview = reviewId => {
+        // props.deleteReview(reviewId);
         props.deleteReview(reviewId);
     };
 
@@ -60,4 +64,8 @@ function Review(props) {
     );
 }
 
-export default Review;
+Review.prototypes = {
+    deleteReview: PropTypes.func.isRequired
+};
+
+export default connect(null, { deleteReview })(Review);

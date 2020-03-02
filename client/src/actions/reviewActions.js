@@ -1,4 +1,4 @@
-import { GET_REVIEWS, NEW_REVIEW } from "./types";
+import { GET_REVIEWS, NEW_REVIEW, DELETE_REVIEW } from "./types";
 import axios from "axios";
 
 export const getReviews = () => dispatch => {
@@ -20,6 +20,18 @@ export const addReview = newReview => dispatch => {
             dispatch({
                 type: NEW_REVIEW,
                 payload: res.data.review
+            })
+        )
+        .catch(err => console.log(err));
+};
+
+export const deleteReview = reviewId => dispatch => {
+    axios
+        .delete(`http://localhost:5000/api/reviews/${reviewId}`)
+        .then(res =>
+            dispatch({
+                type: DELETE_REVIEW,
+                payload: reviewId
             })
         )
         .catch(err => console.log(err));
