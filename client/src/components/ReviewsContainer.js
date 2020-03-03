@@ -8,23 +8,12 @@ import PropTypes from "prop-types";
 // Component that recives a prop of all reviews in the app state and renders them as
 // individual Review components.
 class ReviewsContainer extends Component {
-    // Call the deleteReview of App with the recieved review ID.
-    deleteReview = reviewId => {
-        this.props.deleteReview(reviewId);
-    };
-
-    // Call the toggleRecommended method of App with the recieved review.
-    toggleRecommended = review => {
-        this.props.toggleRecommended(review);
-    };
-
     // Call the editReview method of App with the recieved review.
     editReview = review => {
         this.props.editReview(review);
     };
 
     render() {
-        console.log(this.props.getReviews);
         // Map all the reviews of the recived array to Review Components
         // and return them from this render method.
         const allReviews = this.props.reviews.map((review, index) => {

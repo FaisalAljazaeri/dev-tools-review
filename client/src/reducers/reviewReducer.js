@@ -1,4 +1,9 @@
-import { GET_REVIEWS, NEW_REVIEW, DELETE_REVIEW } from "../actions/types";
+import {
+    GET_REVIEWS,
+    NEW_REVIEW,
+    DELETE_REVIEW,
+    TOGGLE_REVIEW_RECOMMENDATION
+} from "../actions/types";
 
 const initialState = {
     reviews: []
@@ -19,6 +24,12 @@ export default function(state = initialState, action) {
             return {
                 reviews: state.reviews.filter(
                     review => review._id !== action.payload
+                )
+            };
+        case TOGGLE_REVIEW_RECOMMENDATION:
+            return {
+                reviews: state.reviews.map(review =>
+                    action.payload._id === review._id ? action.payload : review
                 )
             };
         default:

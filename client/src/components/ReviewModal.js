@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import EditReviewForm from "./EditReviewForm";
 import axios from "axios";
+import { connect } from "react-redux";
+import { deleteReview } from "../actions/reviewActions";
+import PropTypes from "prop-types";
 
 class ReviewModal extends Component {
     constructor(props) {
@@ -159,4 +162,8 @@ class ReviewModal extends Component {
     }
 }
 
-export default ReviewModal;
+ReviewModal.prototypes = {
+    deleteReview: PropTypes.func.isRequired
+};
+
+export default connect(null, { deleteReview })(ReviewModal);

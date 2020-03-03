@@ -2,8 +2,8 @@ import React from "react";
 import "./Review.css";
 import ReviewModal from "./ReviewModal";
 import { connect } from "react-redux";
-import { deleteReview } from "../actions/reviewActions";
 import PropTypes from "prop-types";
+import { toggleReviewRecommendation } from "../actions/reviewActions";
 
 // Component responsible for rendering every Review element Recieved from the ReviewContainer
 function Review(props) {
@@ -19,14 +19,8 @@ function Review(props) {
     // Triggered when clicking the THUMBS icon and it triggers the function
     // in the APP to update the the passed review's isRecommended property
     const toggleRecommended = e => {
-        props.toggleRecommended(props.review);
-    };
-
-    // Triggered when the Delete Review Modal confirmation button is clicked. It calls the delete method
-    // in the APP and passes it the review to be deleted.
-    const deleteReview = reviewId => {
-        // props.deleteReview(reviewId);
-        props.deleteReview(reviewId);
+        // props.toggleRecommended(props.review);
+        props.toggleReviewRecommendation(props.review);
     };
 
     // Triggered when the Edit Review Modal has been submitted. It calls the editReview method in the APP
@@ -51,7 +45,6 @@ function Review(props) {
                     or A delete Review Confirmation */}
                     <ReviewModal
                         editReview={editReview}
-                        deleteReview={deleteReview}
                         review={props.review}
                     />
                     <i
@@ -64,8 +57,8 @@ function Review(props) {
     );
 }
 
-Review.prototypes = {
-    deleteReview: PropTypes.func.isRequired
+Review.propsTypes = {
+    toggleReviewRecommendation: PropTypes.func.isRequired
 };
 
-export default connect(null, { deleteReview })(Review);
+export default connect(null, { toggleReviewRecommendation })(Review);

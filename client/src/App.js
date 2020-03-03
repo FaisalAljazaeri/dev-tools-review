@@ -27,17 +27,6 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
-    // Function responsible for toggling the isRecommended property of a selected review
-    toggleRecommended = review => {
-        const updatedReview = {
-            ...review,
-            isRecommended: !review.isRecommended
-        };
-
-        // Send the updated review to the backend API and update the state
-        this.updateReview(updatedReview);
-    };
-
     // Function that takes a modified and updates it
     editReview = updatedReview => {
         // Pass the updated review to the fucntion that will update the state and backend
@@ -89,21 +78,6 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
-    // Function to delete a specific Review by id
-    deleteReview = reviewId => {
-        axios
-            .delete(`http://localhost:5000/api/reviews/${reviewId}`)
-            .then(res => {
-                const newReviews = [...this.state.reviews].filter(
-                    review => reviewId !== review._id
-                );
-
-                this.setState({
-                    reviews: newReviews
-                });
-            });
-    };
-
     render() {
         return (
             <Provider store={store}>
@@ -129,18 +103,6 @@ class App extends Component {
                 </div>
             </Provider>
         );
-    }
-
-    // MAKE a GET request to the server to retrieve all Reviews from the Database and populate the state
-    componentDidMount() {
-        axios
-            .get("http://localhost:5000/api/reviews")
-            .then(res => {
-                this.setState({
-                    reviews: res.data
-                });
-            })
-            .catch(err => console.log(err));
     }
 }
 

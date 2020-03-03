@@ -1,4 +1,9 @@
-import { GET_REVIEWS, NEW_REVIEW, DELETE_REVIEW } from "./types";
+import {
+    GET_REVIEWS,
+    NEW_REVIEW,
+    DELETE_REVIEW,
+    TOGGLE_REVIEW_RECOMMENDATION
+} from "./types";
 import axios from "axios";
 
 export const getReviews = () => dispatch => {
@@ -34,5 +39,21 @@ export const deleteReview = reviewId => dispatch => {
                 payload: reviewId
             })
         )
+        .catch(err => console.log(err));
+};
+
+export const toggleReviewRecommendation = review => dispatch => {
+    const updatedReview = { ...review, isRecommended: !review.isRecommended };
+
+    axios
+        .patch(`http://localhost:5000/api/reviews/${updatedReview._id}`, {
+            review: updatedReview
+        })
+        .then(res => {
+            dispatch({
+                type: TOGGLE_REVIEW_RECOMMENDATION,
+                payload: res.data
+            });
+        })
         .catch(err => console.log(err));
 };
