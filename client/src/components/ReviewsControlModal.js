@@ -1,6 +1,9 @@
 import React from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import AddReviewForm from "./AddReviewForm";
+import { connect } from "react-redux";
+import { deleteAllReviews } from "../actions/reviewActions";
+import PropTypes from "prop-types";
 
 // Nested Modal Component inside the UserControls Component. it contains functionality for
 // Deleteing all Reviews, Deleteing all not recommended and Add new review.
@@ -73,4 +76,8 @@ function ReviewsControlModal(props) {
     );
 }
 
-export default ReviewsControlModal;
+ReviewsControlModal.propTypes = {
+    deleteAllReviews: PropTypes.func.isRequired
+};
+
+export default connect(null, { deleteAllReviews })(ReviewsControlModal);

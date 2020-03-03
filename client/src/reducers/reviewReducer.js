@@ -3,7 +3,8 @@ import {
     NEW_REVIEW,
     DELETE_REVIEW,
     TOGGLE_REVIEW_RECOMMENDATION,
-    EDIT_REVIEW
+    EDIT_REVIEW,
+    DELETE_ALL_REVIEWS
 } from "../actions/types";
 
 const initialState = {
@@ -38,6 +39,10 @@ export default function(state = initialState, action) {
                 reviews: state.reviews.map(review =>
                     action.payload._id === review._id ? action.payload : review
                 )
+            };
+        case DELETE_ALL_REVIEWS:
+            return {
+                reviews: []
             };
         default:
             return state;

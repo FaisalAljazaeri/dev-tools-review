@@ -3,7 +3,8 @@ import {
     NEW_REVIEW,
     DELETE_REVIEW,
     TOGGLE_REVIEW_RECOMMENDATION,
-    EDIT_REVIEW
+    EDIT_REVIEW,
+    DELETE_ALL_REVIEWS
 } from "./types";
 import axios from "axios";
 
@@ -68,6 +69,17 @@ export const editReview = updatedReview => dispatch => {
             dispatch({
                 type: EDIT_REVIEW,
                 payload: res.data
+            });
+        })
+        .catch(err => console.log(err));
+};
+
+export const deleteAllReviews = () => dispatch => {
+    axios
+        .delete("http://localhost:5000/api/reviews")
+        .then(res => {
+            dispatch({
+                type: DELETE_ALL_REVIEWS
             });
         })
         .catch(err => console.log(err));

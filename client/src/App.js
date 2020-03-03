@@ -42,17 +42,17 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
-    // Function that makes a DELETE request to the server to delete all Reviews from DB
-    deleteAllReviews = () => {
-        axios
-            .delete("http://localhost:5000/api/reviews")
-            .then(res => {
-                this.setState({
-                    reviews: res.data
-                });
-            })
-            .catch(err => console.log(err));
-    };
+    // // Function that makes a DELETE request to the server to delete all Reviews from DB
+    // deleteAllReviews = () => {
+    //     axios
+    //         .delete("http://localhost:5000/api/reviews")
+    //         .then(res => {
+    //             this.setState({
+    //                 reviews: res.data
+    //             });
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
     // Function that makes a DELETE request to the server to delete all Reviews that aren't recommended from DB
     deleteNotRecommendedReviews = () => {
@@ -73,7 +73,6 @@ class App extends Component {
                     {/* Component Responsible for Modals used in: deleting all reviews, 
                 delete not recommended reviews, and adding new reviews */}
                     <UserControls
-                        deleteAllReviews={this.deleteAllReviews}
                         deleteNotRecommendedReviews={
                             this.deleteNotRecommendedReviews
                         }
