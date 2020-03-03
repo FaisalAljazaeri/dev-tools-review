@@ -2,7 +2,8 @@ import {
     GET_REVIEWS,
     NEW_REVIEW,
     DELETE_REVIEW,
-    TOGGLE_REVIEW_RECOMMENDATION
+    TOGGLE_REVIEW_RECOMMENDATION,
+    EDIT_REVIEW
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,12 @@ export default function(state = initialState, action) {
                 )
             };
         case TOGGLE_REVIEW_RECOMMENDATION:
+            return {
+                reviews: state.reviews.map(review =>
+                    action.payload._id === review._id ? action.payload : review
+                )
+            };
+        case EDIT_REVIEW:
             return {
                 reviews: state.reviews.map(review =>
                     action.payload._id === review._id ? action.payload : review

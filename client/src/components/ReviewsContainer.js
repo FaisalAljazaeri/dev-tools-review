@@ -21,7 +21,6 @@ class ReviewsContainer extends Component {
                 <Review
                     key={index}
                     review={review}
-                    deleteReview={this.props.deleteReview}
                     toggleRecommended={this.toggleRecommended}
                     editReview={this.editReview}
                 />

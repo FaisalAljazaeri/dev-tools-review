@@ -50,11 +50,6 @@ class UserControls extends Component {
         });
     };
 
-    // pass the new review to the App component to add it to the list.
-    addReview = review => {
-        this.props.addReview(review);
-    };
-
     // When the Delete All Reviews button is clicked set the state modal type and open the nested modal.
     toggleDeleteAllReviews = () => {
         this.toggleNested();
@@ -116,7 +111,6 @@ class UserControls extends Component {
                             </Button>
                         </div>
                         <ReviewsControlModal
-                            addReview={this.addReview}
                             deleteAllReviews={this.deleteAllReviews}
                             deleteNotRecommendedReviews={
                                 this.deleteNotRecommendedReviews

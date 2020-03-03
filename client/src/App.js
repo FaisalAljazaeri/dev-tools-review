@@ -15,18 +15,6 @@ class App extends Component {
         };
     }
 
-    // Function to add a new Review to the list
-    addReview = review => {
-        axios
-            .post("http://localhost:5000/api/reviews", review)
-            .then(res => {
-                this.setState({
-                    reviews: [...this.state.reviews, res.data.review]
-                });
-            })
-            .catch(err => console.log(err));
-    };
-
     // Function that takes a modified and updates it
     editReview = updatedReview => {
         // Pass the updated review to the fucntion that will update the state and backend
@@ -85,7 +73,6 @@ class App extends Component {
                     {/* Component Responsible for Modals used in: deleting all reviews, 
                 delete not recommended reviews, and adding new reviews */}
                     <UserControls
-                        addReview={this.addReview}
                         deleteAllReviews={this.deleteAllReviews}
                         deleteNotRecommendedReviews={
                             this.deleteNotRecommendedReviews
@@ -95,8 +82,6 @@ class App extends Component {
                     {/* Component that contains all individual Review Components, it's passes an array of all reviews
                 to map over and make each element a Review Component*/}
                     <ReviewsContainer
-                        // reviews={this.state.reviews}
-                        deleteReview={this.deleteReview}
                         toggleRecommended={this.toggleRecommended}
                         editReview={this.editReview}
                     />

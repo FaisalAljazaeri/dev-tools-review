@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { editReview } from "../actions/reviewActions";
 
 // Component that holds the form for editing any selected Review component and
 // it handles lifting the data of the edited review to the state where it will be updated.
@@ -29,6 +32,7 @@ class EditReviewForm extends Component {
     submitHandler = e => {
         e.preventDefault();
         this.props.editReview({ ...this.state, _id: this.props.review._id });
+        this.props.toggle();
     };
 
     render() {
@@ -72,4 +76,8 @@ class EditReviewForm extends Component {
     }
 }
 
-export default EditReviewForm;
+EditReviewForm.propTypes = {
+    editReview: PropTypes.func.isRequired
+};
+
+export default connect(null, { editReview })(EditReviewForm);

@@ -2,7 +2,8 @@ import {
     GET_REVIEWS,
     NEW_REVIEW,
     DELETE_REVIEW,
-    TOGGLE_REVIEW_RECOMMENDATION
+    TOGGLE_REVIEW_RECOMMENDATION,
+    EDIT_REVIEW
 } from "./types";
 import axios from "axios";
 
@@ -52,6 +53,20 @@ export const toggleReviewRecommendation = review => dispatch => {
         .then(res => {
             dispatch({
                 type: TOGGLE_REVIEW_RECOMMENDATION,
+                payload: res.data
+            });
+        })
+        .catch(err => console.log(err));
+};
+
+export const editReview = updatedReview => dispatch => {
+    axios
+        .patch(`http://localhost:5000/api/reviews/${updatedReview._id}`, {
+            review: updatedReview
+        })
+        .then(res => {
+            dispatch({
+                type: EDIT_REVIEW,
                 payload: res.data
             });
         })

@@ -89,6 +89,7 @@ class ReviewModal extends Component {
             return (
                 <EditReviewForm
                     review={this.props.review}
+                    toggle={this.toggle}
                     editReview={this.editReview}
                 />
             );
