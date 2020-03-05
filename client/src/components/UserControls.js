@@ -66,11 +66,6 @@ class UserControls extends Component {
         });
     };
 
-    // Call the App method to Delete All Not Recommended Reviews.
-    deleteNotRecommendedReviews = () => {
-        this.props.deleteNotRecommendedReviews();
-    };
-
     render() {
         return (
             <div>
@@ -106,9 +101,6 @@ class UserControls extends Component {
                             </Button>
                         </div>
                         <ReviewsControlModal
-                            deleteNotRecommendedReviews={
-                                this.deleteNotRecommendedReviews
-                            }
                             modalType={this.state.nestedModalType}
                             nestedModal={this.state.nestedModal}
                             toggle={this.toggle}

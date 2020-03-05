@@ -23,12 +23,6 @@ function Review(props) {
         props.toggleReviewRecommendation(props.review);
     };
 
-    // Triggered when the Edit Review Modal has been submitted. It calls the editReview method in the APP
-    // and passes it the
-    const editReview = review => {
-        props.editReview(review);
-    };
-
     return (
         <div className="review-card">
             <div className="img-container">
@@ -43,10 +37,7 @@ function Review(props) {
                 <div className="review-controls">
                     {/* Modal Component that conditionally renders either Edit Review Form Component, 
                     or A delete Review Confirmation */}
-                    <ReviewModal
-                        editReview={editReview}
-                        review={props.review}
-                    />
+                    <ReviewModal review={props.review} />
                     <i
                         className={recommendationIconClasses}
                         onClick={toggleRecommended}

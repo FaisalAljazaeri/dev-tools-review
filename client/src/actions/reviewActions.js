@@ -4,7 +4,8 @@ import {
     DELETE_REVIEW,
     TOGGLE_REVIEW_RECOMMENDATION,
     EDIT_REVIEW,
-    DELETE_ALL_REVIEWS
+    DELETE_ALL_REVIEWS,
+    DELETE_NOT_RECOMMENDED_REVIEWS
 } from "./types";
 import axios from "axios";
 
@@ -80,6 +81,18 @@ export const deleteAllReviews = () => dispatch => {
         .then(res => {
             dispatch({
                 type: DELETE_ALL_REVIEWS
+            });
+        })
+        .catch(err => console.log(err));
+};
+
+export const deleteNotRecommendedReviews = () => dispatch => {
+    axios
+        .delete("http://localhost:5000/api/reviews/notrecommended")
+        .then(res => {
+            dispatch({
+                type: DELETE_NOT_RECOMMENDED_REVIEWS,
+                payload: res.data
             });
         })
         .catch(err => console.log(err));

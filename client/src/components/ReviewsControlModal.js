@@ -2,7 +2,10 @@ import React from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import AddReviewForm from "./AddReviewForm";
 import { connect } from "react-redux";
-import { deleteAllReviews } from "../actions/reviewActions";
+import {
+    deleteAllReviews,
+    deleteNotRecommendedReviews
+} from "../actions/reviewActions";
 import PropTypes from "prop-types";
 
 // Nested Modal Component inside the UserControls Component. it contains functionality for
@@ -77,7 +80,10 @@ function ReviewsControlModal(props) {
 }
 
 ReviewsControlModal.propTypes = {
-    deleteAllReviews: PropTypes.func.isRequired
+    deleteAllReviews: PropTypes.func.isRequired,
+    deleteNotRecommendedReviews: PropTypes.func.isRequired
 };
 
-export default connect(null, { deleteAllReviews })(ReviewsControlModal);
+export default connect(null, { deleteAllReviews, deleteNotRecommendedReviews })(
+    ReviewsControlModal
+);

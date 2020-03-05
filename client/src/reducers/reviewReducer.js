@@ -4,7 +4,8 @@ import {
     DELETE_REVIEW,
     TOGGLE_REVIEW_RECOMMENDATION,
     EDIT_REVIEW,
-    DELETE_ALL_REVIEWS
+    DELETE_ALL_REVIEWS,
+    DELETE_NOT_RECOMMENDED_REVIEWS
 } from "../actions/types";
 
 const initialState = {
@@ -43,6 +44,10 @@ export default function(state = initialState, action) {
         case DELETE_ALL_REVIEWS:
             return {
                 reviews: []
+            };
+        case DELETE_NOT_RECOMMENDED_REVIEWS:
+            return {
+                reviews: action.payload
             };
         default:
             return state;

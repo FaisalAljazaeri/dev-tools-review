@@ -61,13 +61,6 @@ class ReviewModal extends Component {
         this.toggle();
     };
 
-    // Called when the EditReviewForm inside the modal was submitted. It passes the data of the edited review to the
-    // APP method editReview where the old review is updated.
-    editReview = review => {
-        this.props.editReview(review);
-        this.toggle();
-    };
-
     // Set modal header content based on the modal selected type.
     getModalHeader = modalType => {
         if (modalType === "delete") {
